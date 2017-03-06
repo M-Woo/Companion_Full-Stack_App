@@ -1,0 +1,37 @@
+{
+  "name": "companion_full-stack_app",
+  "version": "1.0.0",
+  "description": "A website for people seeking solace from the trials of everyday life",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/M-Woo/Companion_Full-Stack_App.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/M-Woo/Companion_Full-Stack_App/issues"
+  },
+  "homepage": "https://github.com/M-Woo/Companion_Full-Stack_App#readme",
+  "dependencies": {
+    "bcrypt": "^1.0.2",
+    "body-parser": "^1.17.1",
+    "connect-flash": "^0.1.1",
+    "dotenv": "^4.0.0",
+    "ejs": "^2.5.6",
+    "express": "^4.15.2",
+    "express-ejs-layouts": "^2.2.0",
+    "express-session": "^1.15.1",
+    "passport": "^0.3.2",
+    "passport-local": "^1.0.0",
+    "pg": "^6.1.3",
+    "pg-hstore": "^2.3.2",
+    "request": "^2.80.0",
+    "sequelize": "^3.30.2",
+    "session": "^0.1.0",
+    "socket.io": "^1.7.3"
+  }
+}
