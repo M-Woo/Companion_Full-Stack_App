@@ -3,7 +3,7 @@ var bodyParser = require('body-parser')
 var ejsLayouts = require('express-ejs-layouts')
 var session = require('express-session');
 var flash = require('connect-flash');
-// var isLoggedin = require('./middleware/isLoggedin')
+var isLoggedIn = require('./middleware/isLoggedIn')
 var passport = require('./config/passportConfig');
 // require('dotenv').config();
 
@@ -20,16 +20,15 @@ app.use(session({
 	resave: false,
 	saveUninitialized: true
 }));
-// app.use(flash());
+app.use(flash());
 app.use(passport.initialize());
 app.use(passport.session());
-// app.use(function(req, res, next){
-// 	res.locals.currentUser = req.user;
-// 	res.locals.alerts = req.flash();
-// 	next();
-// });
 
-
+app.use(function(req, res, next){
+	res.locals.currentUser = req.user;
+	res.locals.alerts = req.flash();
+	next();
+});
 
 app.get('/', function(req, res){
 	res.render('main/index')
@@ -39,10 +38,9 @@ app.get('/companion', function(req, res){
 	res.render('companion/index')
 })
 
-app.get('/profile', function(req, res){
+app.get('/profile', isLoggedIn, function(req, res){
 	res.render('profile')
 })
-
 
 //controllers
 
