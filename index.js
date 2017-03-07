@@ -39,6 +39,14 @@ app.get('/companion', function(req, res){
 	res.render('companion/index')
 })
 
+
+
+//controllers
+
+app.use('/auth', require('./controllers/auth'));
+
+//listen
+
 // var server = app.listen(process.env.PORT || 3000);
 
 var io = require('socket.io').listen(app.listen(port));
