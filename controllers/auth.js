@@ -1,5 +1,6 @@
 var express = require('express');
 var db = require('../models');
+var passport = require("../config/passportConfig");
 var router = express.Router();
 
 
@@ -7,13 +8,19 @@ router.get('/login', function(req, res){
 	res.render('auth/login');
 })
 
+router.post("/login", passport.authenticate("local", {
+  successRedirect: "/",
+  successFlash: "Good job, you logged in",
+  failureRedirect: "/auth/login",
+  failureFlash: "Invalid Credentials"
+}));
 
 router.get('/signup', function(req, res){
 	res.render('auth/signup');
 })
 
 router.post('/signup', function(req, res){
-	db.user.findOrCreate({
+	db.user.findOrCreate({ //check if email exists
 		where: {email: req.body.email},
 		defaults: {
 			username: req.body.username,

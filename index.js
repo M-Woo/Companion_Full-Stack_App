@@ -4,7 +4,7 @@ var ejsLayouts = require('express-ejs-layouts')
 var session = require('express-session');
 var flash = require('connect-flash');
 // var isLoggedin = require('./middleware/isLoggedin')
-// var passport = require('./config/passportConfig');
+var passport = require('./config/passportConfig');
 // require('dotenv').config();
 
 var port = 3000;
@@ -21,8 +21,8 @@ app.use(session({
 	saveUninitialized: true
 }));
 // app.use(flash());
-// app.use(passport.initialize());
-// app.use(passport.session());
+app.use(passport.initialize());
+app.use(passport.session());
 // app.use(function(req, res, next){
 // 	res.locals.currentUser = req.user;
 // 	res.locals.alerts = req.flash();
