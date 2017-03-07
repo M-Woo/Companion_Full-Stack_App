@@ -34,10 +34,6 @@ app.get('/', function(req, res){
 	res.render('main/index')
 })
 
-app.get('/companion', function(req, res){
-	res.render('companion/index')
-})
-
 app.get('/profile', isLoggedIn, function(req, res){
 	res.render('profile')
 })
@@ -45,7 +41,7 @@ app.get('/profile', isLoggedIn, function(req, res){
 //controllers
 
 app.use('/auth', require('./controllers/auth'));
-
+app.use('/companion', require('./controllers/companion'));
 //listen
 
 // var server = app.listen(process.env.PORT || 3000);
