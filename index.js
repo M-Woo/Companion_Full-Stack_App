@@ -5,7 +5,7 @@ var session = require('express-session');
 var flash = require('connect-flash');
 var isLoggedIn = require('./middleware/isLoggedIn')
 var passport = require('./config/passportConfig');
-// require('dotenv').config();
+require('dotenv').config();
 
 var port = 3000;
 
