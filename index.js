@@ -15,11 +15,11 @@ app.set('view engine', 'ejs')
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(ejsLayouts);
 app.use(express.static(__dirname + '/public/'));
-// app.use(session({
-// 	secret: process.env.SESSION_SECRET,
-// 	resave: false,
-// 	saveUninitialized: true
-// }));
+app.use(session({
+	secret: process.env.SESSION_SECRET,
+	resave: false,
+	saveUninitialized: true
+}));
 // app.use(flash());
 // app.use(passport.initialize());
 // app.use(passport.session());
@@ -39,6 +39,9 @@ app.get('/companion', function(req, res){
 	res.render('companion/index')
 })
 
+app.get('/profile', function(req, res){
+	res.render('profile')
+})
 
 
 //controllers
