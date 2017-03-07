@@ -28,16 +28,24 @@ router.post('/signup', function(req, res){
 		}
 	}).spread(function(user, created){
 		if (created) {
-			console.log('User created');
-			res.redirect('/profile');
+	      passport.authenticate("local", {
+	        successRedirect: "/",
+	        successFlash: "Account create and logged in"
+	      })(req, res);
 		} else {
-			console.log('Email already exists');
-			res.redirect('/auth/signup');
+	      req.flash("error", "Email already exists");
+	      res.redirect("/auth/signup");
 		}
 	}).catch(function(error){
 		req.flash('error', err.message)
 		res.redirect('/auth/signup');
 	});
+});
+
+router.get("/logout", function(req, res){
+  req.logout();
+  req.flash("success", "You are logged out");
+  res.redirect("/");
 });
 
 
