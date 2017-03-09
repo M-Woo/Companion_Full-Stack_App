@@ -6,7 +6,6 @@ console.log('hi')
     var messages = [];
     var socket = io();
 
-
     var field = document.getElementById("field");
     var sendButton = document.getElementById("send");
     var content = document.getElementById("content");

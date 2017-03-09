@@ -12,6 +12,7 @@ router.get('/', function(req, res){
 })
 
 router.get('/one', function(req, res){
+	// $('#send').click(function(){
 	var MarkovChain = require('markovchain')
 		fs = require('fs')
 	 	quotes = new MarkovChain(fs.readFileSync('quotes.txt', 'utf8'))
@@ -28,8 +29,12 @@ router.get('/one', function(req, res){
 	  return sentence.split(" ").length >= 20
 	}
 	io.emit(quotes.start(useUpperCase).end(stopAfter).process())
+
 	res.render('companion/companion_1')
-})
+});
+// })
+
 
 module.exports = router;
+
 
