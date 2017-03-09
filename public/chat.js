@@ -4,7 +4,9 @@ window.onload = function() {
 console.log('hi')
 
     var messages = [];
-    var socket = io.connect('http://localhost:3000');
+    var socket = io();
+
+
     var field = document.getElementById("field");
     var sendButton = document.getElementById("send");
     var content = document.getElementById("content");
@@ -33,7 +35,8 @@ console.log('hi')
         }
         console.log(messages)
     };
-}
+  }
+
 
 $(document).ready(function() {
 	$("#field").keyup(function(e) {
@@ -42,4 +45,7 @@ $(document).ready(function() {
 		}
 	});
 });
+
+
+console.log(messages)
 
