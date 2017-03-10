@@ -27,22 +27,22 @@ console.log('chat.js works')
     });
 
 sendButton.onclick = sendMessage = function() {
-    // e.preventDefault();
     console.log("i was clicked");
     $.ajax({
             method: "GET", 
             url:"/markov/one"
         }).done(function(data){
             var $message = $('#message')
-            // console.log(data.markovMsg);
-            socket.emit('send message', {markovMsg: data.markovMsg});
+            console.log(data.markovMsg);
+            // socket.emit('send message', {msg: $message.val(), markovMsg: data.markovMsg});
+            // $('#content').append('<div class="well">'+data.msg1+'</div>');
+            // $('#content').append('<div class="well">'+data.markovMsg+'</div>');
+            socket.emit('send', {message:data.markovMsg})
             $message.val('');
         })    
-            socket.on('newMessage', function(data){
-    console.log(data)
-            // $('#bot').append('<div class="well">'+data.markovMsg+'</div>');
-            socket.emit('send', {message:data.markovMsg})
-        });
+    //         socket.on('newMessage', function(data){
+    // console.log(data)
+        // });
         if(name.value == "") {
             alert("Please type your name!");
         } else {
@@ -52,13 +52,6 @@ sendButton.onclick = sendMessage = function() {
     console.log(messages)
     };
   }
-
-
-
-
-
-
-
 
 
 //Key Press

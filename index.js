@@ -33,23 +33,6 @@ app.use(function(req, res, next){
 	next();
 });
 
-//-----------
-	var MarkovChain = require('markovchain')
-		fs = require('fs')
-	 	quotes = new MarkovChain(fs.readFileSync('quotes.txt', 'utf8'))
-
-	var useUpperCase = function(wordList) {
-	  var tmpList = Object.keys(wordList).filter(function(word) {
-	    return word[0] >= 'A' && word[0] <= 'Z'
-	  })
-	  return tmpList[~~(Math.random()*tmpList.length)]
-	}
-
-	// same as passing value, 5 to end function 
-	var stopAfter = function(sentence) {
-	  return sentence.split(" ").length >= 20
-	}
-//----------
 
 app.get('/', function(req, res){
 	res.render('main/index')
@@ -57,7 +40,6 @@ app.get('/', function(req, res){
 app.get('/profile', isLoggedIn, function(req, res){
 	res.render('profile')
 })
-
 app.get('/companion', function(req, res){
 	res.render('companion/index')
 })
@@ -67,8 +49,6 @@ app.get('/companion/one', function(req, res){
 app.get('/companion/two', function(req, res){
 	res.render('companion/companion_2')
 })
-
-
 
 
 //controllers
@@ -82,12 +62,10 @@ io.sockets.on('connection', function (socket) {
     socket.on('send', function (data) {
         io.sockets.emit('message', data);
     });
-
 	socket.on('send message', function(data){
 		console.log(data);
-		io.sockets.emit('newMessage', data)
+		io.sockets.emit('newMessage', {msg1: data.msg, markovMsg1: data.markovMsg})
 	})  
-
     // socket.on('send', function(data){
     // 	io.sockets.emit()
     // })
