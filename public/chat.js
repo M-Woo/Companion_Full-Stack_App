@@ -1,12 +1,12 @@
 
 window.onload = function() {
 
-console.log('hi')
+console.log('chat.js works')
 
     var messages = [];
-    var socket = io();
+    var socket = io.connect();
 
-    var field = document.getElementById("field");
+    var message = document.getElementById("message");
     var sendButton = document.getElementById("send");
     var content = document.getElementById("content");
     var name = document.getElementById("name");
@@ -25,25 +25,42 @@ console.log('hi')
         }
     });
 
-    sendButton.onclick = function() {
+sendButton.onclick = sendMessage = function(e) {
+    // e.preventDefault();
+    console.log("i was clicked");
+    $.ajax({
+            method: "GET", 
+            url:"/markov/one"
+        }).done(function(data){
+            var $message = $('#message')
+            console.log(data.markovMsg);
+            socket.emit('send message', {msg: $message.val(), markovMsg: data.markovMsg});
+            $message.val('');
+
+            socket.on('new message', function(data){
+            console.log("calling socket.on in markov.js");
+            socket.emit(data.markovMsg1)
+        });
+
+        })    
+
         if(name.value == "") {
             alert("Please type your name!");
         } else {
-            var text = field.value;
+            var text = message.value;
             socket.emit('send', { message: text, username: name.value });
         }
         console.log(messages)
     };
   }
-
-
-$(document).ready(function() {
-	$("#field").keyup(function(e) {
+//Key Press
+	$("#message").keydown(function(e) {
 		if(e.keyCode == 13) {
 			sendMessage();
 		}
 	});
-});
+
+
 
 
 console.log(messages)

@@ -1,12 +1,12 @@
 var express = require('express')
 var bodyParser = require('body-parser')
 var ejsLayouts = require('express-ejs-layouts')
+var MarkovChain = require('markovchain')
 
 var app = express();
 var http = require("http").Server(app);
 var io = require("socket.io")(http);
-
-var controller = require('./controllers/companion')
+var socket;
 
 var session = require('express-session');
 var flash = require('connect-flash');
@@ -54,47 +54,43 @@ app.use(function(req, res, next){
 app.get('/', function(req, res){
 	res.render('main/index')
 })
-
 app.get('/profile', isLoggedIn, function(req, res){
 	res.render('profile')
 })
 
+app.get('/companion', function(req, res){
+	res.render('companion/index')
+})
+app.get('/companion/one', function(req, res){
+	res.render('companion/companion_1')
+})
+app.get('/companion/two', function(req, res){
+	res.render('companion/companion_2')
+})
 
-// app.get('/companion/one', function(req, res){
-// 		// $('#send').click(function(){
-// 	var MarkovChain = require('markovchain')
-// 		fs = require('fs')
-// 	 	quotes = new MarkovChain(fs.readFileSync('quotes.txt', 'utf8'))
 
-// 	var useUpperCase = function(wordList) {
-// 	  var tmpList = Object.keys(wordList).filter(function(word) {
-// 	    return word[0] >= 'A' && word[0] <= 'Z'
-// 	  })
-// 	  return tmpList[~~(Math.random()*tmpList.length)]
-// 	}
 
-// 	// same as passing value, 5 to end function 
-// 	var stopAfter = function(sentence) {
-// 	  return sentence.split(" ").length >= 20
-// 	}
-// 	res.send(quotes.start(useUpperCase).end(stopAfter).process())
-// // })
-// 	res.render('companion/companion_1')
-// });
 
 //controllers
 
 app.use('/auth', require('./controllers/auth'));
-app.use('/companion', require('./controllers/companion'));
-//listen
+app.use('/markov', require('./controllers/markov'));
  
 // SOCKET IO CONNECTION HANDLER
 io.sockets.on('connection', function (socket) {
     socket.emit('message', { message: 'welcome to the chat' });
-    // socket.emit('message',{message: quotes.start(useUpperCase).end(stopAfter).process()})
     socket.on('send', function (data) {
         io.sockets.emit('message', data);
     });
+
+	socket.on('send message', function(data){
+		console.log("emitting new message");
+		io.sockets.emit()
+	})   
+
+    // socket.on('send', function(data){
+    // 	io.sockets.emit()
+    // })
 });
 
 
