@@ -14,7 +14,8 @@ console.log('chat.js works')
     socket.on('message', function (data) {
         if(data.message) {
             messages.push(data);
-            var html = '';
+            
+                var html = '';
             for(var i=0; i<messages.length; i++) {
                 html += '<b>' + (messages[i].username ? messages[i].username : 'Server') + ': </b>';
                 html += messages[i].message + '<br />';
@@ -25,7 +26,7 @@ console.log('chat.js works')
         }
     });
 
-sendButton.onclick = sendMessage = function(e) {
+sendButton.onclick = sendMessage = function() {
     // e.preventDefault();
     console.log("i was clicked");
     $.ajax({
@@ -33,35 +34,39 @@ sendButton.onclick = sendMessage = function(e) {
             url:"/markov/one"
         }).done(function(data){
             var $message = $('#message')
-            console.log(data.markovMsg);
-            socket.emit('send message', {msg: $message.val(), markovMsg: data.markovMsg});
+            // console.log(data.markovMsg);
+            socket.emit('send message', {markovMsg: data.markovMsg});
             $message.val('');
-
-            socket.on('new message', function(data){
-            console.log("calling socket.on in markov.js");
-            socket.emit(data.markovMsg1)
-        });
-
         })    
-
+            socket.on('newMessage', function(data){
+    console.log(data)
+            // $('#bot').append('<div class="well">'+data.markovMsg+'</div>');
+            socket.emit('send', {message:data.markovMsg})
+        });
         if(name.value == "") {
             alert("Please type your name!");
         } else {
             var text = message.value;
             socket.emit('send', { message: text, username: name.value });
         }
-        console.log(messages)
+    console.log(messages)
     };
   }
+
+
+
+
+
+
+
+
+
 //Key Press
 	$("#message").keydown(function(e) {
 		if(e.keyCode == 13) {
 			sendMessage();
 		}
 	});
-
-
-
 
 console.log(messages)
 

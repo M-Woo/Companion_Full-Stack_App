@@ -84,9 +84,9 @@ io.sockets.on('connection', function (socket) {
     });
 
 	socket.on('send message', function(data){
-		console.log("emitting new message");
-		io.sockets.emit()
-	})   
+		console.log(data);
+		io.sockets.emit('newMessage', data)
+	})  
 
     // socket.on('send', function(data){
     // 	io.sockets.emit()
