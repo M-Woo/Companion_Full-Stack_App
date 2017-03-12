@@ -1,8 +1,6 @@
 
 window.onload = function() {
 
-console.log('chat.js works')
-
     var messages = [];
     var socket = io.connect();
 
@@ -17,7 +15,7 @@ console.log('chat.js works')
             
                 var html = '';
             for(var i=0; i<messages.length; i++) {
-                html += '<b>' + (messages[i].username ? messages[i].username : 'Jesus') + ': </b>';
+                html += '<b>' + (messages[i].username ? messages[i].username : 'Hitler') + ': </b>';
                 html += messages[i].message + '<br />';
             }
             content.innerHTML = html;
@@ -31,7 +29,7 @@ sendButton.onclick = sendMessage = function() {
     $("#content").scrollTop($("#content")[0].scrollHeight);
     $.ajax({
             method: "GET", 
-            url:"/markov/one"
+            url:"/markov/two"
         }).done(function(data){
             var $message = $('#message')
             console.log(data.markovMsg);
@@ -41,7 +39,8 @@ sendButton.onclick = sendMessage = function() {
         if(name.value == "") {
             alert("Please type your name!");
         } else {
-            socket.emit('send', { message: message.value, username: name.value });
+            var text = message.value;
+            socket.emit('send', { message: text, username: name.value });
         }
     console.log(messages)
     };

@@ -9,7 +9,7 @@ router.get('/login', function(req, res){
 })
 
 router.post("/login", passport.authenticate("local", {
-  successRedirect: "/",
+  successRedirect: "/companion",
   successFlash: "Good job, you logged in",
   failureRedirect: "/auth/login",
   failureFlash: "Invalid Credentials"

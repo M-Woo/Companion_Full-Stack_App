@@ -65,10 +65,7 @@ io.sockets.on('connection', function (socket) {
 	socket.on('send message', function(data){
 		console.log(data);
 		io.sockets.emit('newMessage', {msg1: data.msg, markovMsg1: data.markovMsg})
-	})  
-    // socket.on('send', function(data){
-    // 	io.sockets.emit()
-    // })
+	}) 
 });
 
 

@@ -34,7 +34,7 @@ router.get('/one', function(req,res){
 router.get('/two', function(req,res){
 		var MarkovChain = require('markovchain')
   		fs = require('fs')
-  	 	quotes = new MarkovChain(fs.readFileSync('quotes.txt', 'utf8'))
+  	 	quotes = new MarkovChain(fs.readFileSync('quotes2.txt', 'utf8'))
 
 		var useUpperCase = function(wordList) {
 		  var tmpList = Object.keys(wordList).filter(function(word) {
