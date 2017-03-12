@@ -1,1 +1,9 @@
 <h1>My Profile</h1>
+
+<strong>User Object: </strong><%- JSON.stringify(currentUser)%>
+
+<% users.forEach(function(u){ %>
+	<h3><%= u.username %></h3>
+	<h3><%= u.email %></h3>
+	<a href="/profile/<%=  u.id %>" class="btn btn-danger glyphicon glyphicon-trash delete-btn">DELETE</a>
+<% }); %>

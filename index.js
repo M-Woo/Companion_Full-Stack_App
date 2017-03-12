@@ -1,6 +1,7 @@
 var express = require('express')
 var bodyParser = require('body-parser')
 var ejsLayouts = require('express-ejs-layouts')
+var db = require("./models");
 var MarkovChain = require('markovchain')
 
 var app = express();
@@ -37,9 +38,20 @@ app.use(function(req, res, next){
 app.get('/', function(req, res){
 	res.render('main/index')
 })
-app.get('/profile', isLoggedIn, function(req, res){
-	res.render('profile')
+app.get('/profile/', isLoggedIn, function(req, res){
+	db.user.findAll()
+	.then(function(result){
+	res.render('profile', {users: result});
+	})
 })
+app.delete('/profile/:id', function(req, res){
+  db.user.destroy({
+    where: {id: req.params.id}
+  }).then(function(){
+    successFlash: ("success", "Your account has been deleted.");
+    res.redirect('main/index');
+  });
+});  
 app.get('/companion', function(req, res){
 	res.render('companion/index')
 })

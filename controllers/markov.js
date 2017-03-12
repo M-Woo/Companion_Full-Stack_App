@@ -30,7 +30,6 @@ router.get('/one', function(req,res){
 
 		res.send({markovMsg: markovMsg});
 });
-
 router.get('/two', function(req,res){
 		var MarkovChain = require('markovchain')
   		fs = require('fs')
