@@ -42,7 +42,6 @@ app.get('/about', function(req, res){
 app.get('/profile', isLoggedIn, function(req, res){
 	db.user.findAll()
 	.then(function(result){
-	console.log(result)
 	res.render('profile', {users: result});
 	})
 })

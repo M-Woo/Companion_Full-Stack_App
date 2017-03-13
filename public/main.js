@@ -1,3 +1,6 @@
+console.log('main.js works');
+
+// Delete ajax call
 $('.delete-account').on('click', function(e) {
   e.preventDefault();
   console.log('clicked!')
@@ -13,6 +16,7 @@ $('.delete-account').on('click', function(e) {
   });
 });
 
+// Website JS animations
 
 $(window).load(function(){
     
@@ -41,13 +45,14 @@ $(document).ready(function(e) {
     
 });
 
-wow = new WOW(
-  {
-    animateClass: 'animated',
-    offset:       100
-  }
-);
-wow.init();
+
+// wow = new WOW(
+//   {
+//     animateClass: 'animated',
+//     offset:       100
+//   }
+// );
+// wow.init();
 
 $(window).load(function(){
   
