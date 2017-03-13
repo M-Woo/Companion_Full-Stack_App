@@ -64,6 +64,9 @@ app.get('/companion/one', function(req, res){
 app.get('/companion/two', function(req, res){
 	res.render('companion/companion_2')
 })
+app.get('/companion/three', function(req, res){
+	res.render('companion/companion_3')
+})
 
 //controllers
 

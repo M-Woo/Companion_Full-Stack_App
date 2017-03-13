@@ -93,6 +93,11 @@ p{
 	background:url(../img/pw_maze_black_2X.png) left top repeat;
 	padding:280px 0;
 }
+.header1{
+	text-align:center;
+	background:url(../img/pw_maze_black_2X.png) left top repeat;
+	padding:100px 0;
+}
 .logo{
 	width:130px;
 	margin:0 auto 35px;
@@ -772,7 +777,7 @@ input{
 	padding:35px 0 35px;
 }
 .footer-logo{
-	margin:15px auto 35px;
+	margin:5px auto 5px;
 	width: 76px;
 }
 .copyright, .credits{
@@ -816,6 +821,60 @@ input{
 
 .portfolioContainer{
 	max-width: 1140px;
+}
+/*------------------------------
+Button animation */
+
+.principal
+{
+  background-color:#DD4545;
+}
+.principal_petit
+{
+  width: 100%;
+  margin: 50px 0px 10px 0px;
+  height: 170px;
+  background-color: #ffffff;
+  border-radius: 100px;
+  -webkit-transition:all 0.2s ease-in;
+  -moz-transition:all 0.2s ease-in;
+  -ms-transition:all 0.2s ease-in;
+  -o-transition:all 0.2s ease-in;
+  transition:all 0.2s ease-in;
+}
+.principal_petit:hover
+{
+  -webkit-transform: scale(1.1);
+  -webkit-transition:all 0.2s ease-in;
+  -moz-transform: scale(1.1);
+  -moz-transition:all 0.2s ease-in;
+  -ms-transform: scale(1.1);
+  -ms-transition:all 0.2s ease-in;
+  -o-transform: scale(1.1);
+  -o-transition:all 0.2s ease-in;
+  transform: scale(1.1);
+  transition:all 0.2s ease-in;
+}
+.principal_img
+{
+  -webkit-transition:all 0.2s ease-in;
+  -moz-transition:all 0.2s ease-in;
+  -ms-transition:all 0.2s ease-in;
+  -o-transition:all 0.2s ease-in;
+  transition:all 0.2s ease-in;
+}
+.principal_img:hover
+{
+  -webkit-transform: scale(0.7);
+  -webkit-transition:all 0.2s ease-in;
+  -moz-transform: scale(0.7);
+  -moz-transition:all 0.2s ease-in;
+  -ms-transform: scale(0.7);
+  -ms-transition:all 0.2s ease-in;
+  -o-transform: scale(0.7);
+  -o-transition:all 0.2s ease-in;
+  transform: scale(0.7);
+  transition:all 0.2s ease-in;
 }
 
 
