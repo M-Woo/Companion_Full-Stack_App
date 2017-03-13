@@ -4,6 +4,7 @@ var passport = require("../config/passportConfig");
 var MarkovChain = require('markovchain')
 var router = express.Router();
 
+
 router.get('/', function(req, res){
 	res.render('companion/index')
 })
