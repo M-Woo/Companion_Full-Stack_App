@@ -17,7 +17,7 @@ console.log('chat.js works')
             
                 var html = '';
             for(var i=0; i<messages.length; i++) {
-                html += '<b>' + (messages[i].username ? messages[i].username : 'Dr Suess') + ': </b>';
+                html += '<b>' + (messages[i].username ? messages[i].username : 'Dr Seuss') + ': </b>';
                 html += messages[i].message + '<br />';
             }
             content.innerHTML = html;

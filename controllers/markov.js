@@ -18,15 +18,12 @@ router.get('/one', function(req,res){
 		  })
 		  return tmpList[~~(Math.random()*tmpList.length)]
 		}
-
 		// same as passing value, 5 to end function 
 		var stopAfter = function(sentence) {
 		  return sentence.split(" ").length >= 30
 		}
-		
 		markovMsg = (quotes.start(useUpperCase).end(stopAfter).process());
 		console.log("from /newMarkovMsg " + markovMsg);
-
 		res.send({markovMsg: markovMsg});
 });
 router.get('/two', function(req,res){
