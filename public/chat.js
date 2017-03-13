@@ -19,8 +19,10 @@ console.log('chat.js works')
             for(var i=0; i<messages.length; i++) {
                 html += '<b>' + (messages[i].username ? messages[i].username : 'Dr Seuss') + ': </b>';
                 html += messages[i].message + '<br />';
-            }
-            content.innerHTML = html;
+            } 
+            if (content){
+                content.innerHTML = html;
+            }   
         } else {
             console.log("There is a problem:", data);
         }
@@ -56,5 +58,4 @@ sendButton.onclick = sendMessage = function() {
 		}
 	});
 
-// console.log(messages)
 

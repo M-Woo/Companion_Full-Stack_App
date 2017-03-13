@@ -45,13 +45,14 @@ app.get('/profile', isLoggedIn, function(req, res){
 	res.render('profile', {users: result});
 	})
 })
-app.delete('/profile/:id', function(req, res){
+app.get('/profile/:id', function(req, res){
+	console.log('deleted');
   db.user.destroy({
     where: {id: req.params.id}
   }).then(function(){
     successFlash: ("success", "Your account has been deleted.");
     // res.redirect('main/index');
-    res.send('hi')
+    res.send('deleted')
   });
 });  
 app.get('/companion', isLoggedIn, function(req, res){
