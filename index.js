@@ -8,7 +8,6 @@ var app = express();
 var http = require("http").Server(app);
 var io = require("socket.io")(http);
 var socket;
-
 var session = require('express-session');
 var flash = require('connect-flash');
 var isLoggedIn = require('./middleware/isLoggedIn')
@@ -27,7 +26,6 @@ app.use(session({
 app.use(flash());
 app.use(passport.initialize());
 app.use(passport.session());
-
 app.use(function(req, res, next){
 	res.locals.currentUser = req.user;
 	res.locals.alerts = req.flash();
@@ -38,9 +36,13 @@ app.use(function(req, res, next){
 app.get('/', function(req, res){
 	res.render('main/index')
 })
+app.get('/about', function(req, res){
+	res.render('about')
+})
 app.get('/profile', isLoggedIn, function(req, res){
 	db.user.findAll()
 	.then(function(result){
+	console.log(result)
 	res.render('profile', {users: result});
 	})
 })
@@ -63,7 +65,6 @@ app.get('/companion/two', function(req, res){
 	res.render('companion/companion_2')
 })
 
-
 //controllers
 
 app.use('/auth', require('./controllers/auth'));
@@ -83,5 +84,3 @@ io.sockets.on('connection', function (socket) {
 
 
 http.listen(process.env.PORT || 3000);
-
-// app.listen(process.env.PORT || 3000)

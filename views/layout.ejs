@@ -14,37 +14,20 @@
 
 </head>
 <body>
-<nav class="main-nav-outer" id="test"><!--main-nav-start-->
-	<div class="container">
-        <ul class="main-nav">
-        	<li><a href="/">Home</a></li>
-            <li><a href="/">About</a></li>
-            <li><a href="/companion">Companions</a></li>
-            <li><a href="/profile">Profile</a></li>
-            <li class="small-logo"><a href="#header"><img src="img/small-logo.png" alt=""></a></li>
-            <li><a href="/auth/login">Login</a></li>
-            <li><a href="/auth/logout">Logout</a></li>
-            <li><a href="/auth/signup">Signup</a></li>
-        </ul>
-        <a class="res-nav_click" href="#"><i class="fa-bars"></i></a>
-    </div>
-</nav><!--main-nav-end-->
 
 <div class="text-center">
+  <% include partials/navbar %>
 	<% include partials/alerts %>
 		<%- body %>
 </div>		
-
 	<script src="https://code.jquery.com/jquery-2.2.4.min.js"
 	  integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
 	  crossorigin="anonymous"></script>
 	<script src='/chat.js'></script>
-	<!-- <script src='/chat2.js'></script> -->
   <script src='/main.js'></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
 	<script src="/socket.io/socket.io.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
-
 	<script type="text/javascript" src="js/jquery.1.8.3.min.js"></script>
 	<script type="text/javascript" src="js/bootstrap.js"></script>
 	<script type="text/javascript" src="js/jquery-scrolltofixed.js"></script>
@@ -55,13 +38,6 @@
 </body>
 </html>
 </head>
-<footer class="footer">
-    <div class="container">
-        <div class="footer-logo"><a href="#"><img src="http://companionapp.io/Press-Resources/assets/logo-white-bg.png" alt=""></a></div>
-        <span class="copyright">&copy; Companion AI. All Rights Reserved</span>
-        </div>
-    </div>
-</footer>
 <body>
 
 <script type="text/javascript">

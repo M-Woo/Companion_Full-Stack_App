@@ -1,8 +1,8 @@
 <div class="header">
 <h1>Profile</h1>
-<% users.forEach(function(u){ %>
-	<h3><%= u.username %></h3>
-	<h3><%= u.email %></h3>
-	<a href="/profile/<%=  u.id %>" class="btn btn-danger glyphicon glyphicon-trash delete-btn delete-account">DELETE</a>
-<% }); %>
+<% JSON.stringify(currentUser) %>
+	<h3><%= currentUser.username %></h3>
+	<h3><%= currentUser.email %></h3>
+	<a href="/profile/<%=  currentUser.id %>" class="btn btn-danger glyphicon glyphicon-trash delete-btn delete-account">DELETE</a>
+
 </div>

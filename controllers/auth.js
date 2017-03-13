@@ -7,18 +7,15 @@ var router = express.Router();
 router.get('/login', function(req, res){
 	res.render('auth/login');
 })
-
 router.post("/login", passport.authenticate("local", {
   successRedirect: "/companion",
   successFlash: "Good job, you logged in",
   failureRedirect: "/auth/login",
   failureFlash: "Invalid Credentials"
 }));
-
 router.get('/signup', function(req, res){
 	res.render('auth/signup');
 })
-
 router.post('/signup', function(req, res){
 	db.user.findOrCreate({ //check if email exists
 		where: {email: req.body.email},
@@ -41,7 +38,6 @@ router.post('/signup', function(req, res){
 		res.redirect('/auth/signup');
 	});
 });
-
 router.get("/logout", function(req, res){
   req.logout();
   req.flash("success", "You are logged out");

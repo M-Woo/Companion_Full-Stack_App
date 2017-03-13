@@ -7,7 +7,6 @@ var router = express.Router();
 router.get('/', function(req, res){
 	res.render('companion/index')
 })
-
 router.get('/one', function(req,res){
 		var MarkovChain = require('markovchain')
   		fs = require('fs')
