@@ -38,7 +38,7 @@ app.use(function(req, res, next){
 app.get('/', function(req, res){
 	res.render('main/index')
 })
-app.get('/profile/', isLoggedIn, function(req, res){
+app.get('/profile', isLoggedIn, function(req, res){
 	db.user.findAll()
 	.then(function(result){
 	res.render('profile', {users: result});
@@ -49,7 +49,8 @@ app.delete('/profile/:id', function(req, res){
     where: {id: req.params.id}
   }).then(function(){
     successFlash: ("success", "Your account has been deleted.");
-    res.redirect('main/index');
+    // res.redirect('main/index');
+    res.send('hi')
   });
 });  
 app.get('/companion', function(req, res){

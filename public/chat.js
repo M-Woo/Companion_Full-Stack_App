@@ -48,6 +48,7 @@ sendButton.onclick = sendMessage = function() {
   }
 
 
+
 //Key Press
 	$("#message").keydown(function(e) {
 		if(e.keyCode == 13) {
@@ -55,5 +56,5 @@ sendButton.onclick = sendMessage = function() {
 		}
 	});
 
-console.log(messages)
+// console.log(messages)
 
