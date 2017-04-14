@@ -1,5 +1,17 @@
 /* CSS Document */
-
+#content{
+	max-width: 60%;
+	margin-left: 30%;
+}
+b{
+	color: white;
+}
+.iconImage{
+	max-width:50px; 
+	max-height:50px;
+	margin-top: -20px;
+	filter: blue;
+}
 /* Float Elements 
 ---------------------------------*/
 .fl-lt {float:left;}
@@ -91,12 +103,15 @@ p{
 .header{
 	text-align:center;
 	background:url(../img/pw_maze_black_2X.png) left top repeat;
-	padding:280px 0;
+	/*padding:280px 0;*/
+	padding-top: 10%;
+	height: 100vh;
 }
 .header1{
 	text-align:center;
 	background:url(../img/pw_maze_black_2X.png) left top repeat;
 	padding:100px 0;
+	height: 100vh;
 }
 .logo{
 	width:130px;

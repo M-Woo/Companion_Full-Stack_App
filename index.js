@@ -55,16 +55,16 @@ app.get('/profile/:id', function(req, res){
     res.send('deleted')
   });
 });  
-app.get('/companion', isLoggedIn, function(req, res){
+app.get('/companion', function(req, res){
 	res.render('companion/index')
 })
-app.get('/companion/one', isLoggedIn, function(req, res){
+app.get('/companion/one', function(req, res){
 	res.render('companion/companion_1')
 })
-app.get('/companion/two', isLoggedIn, function(req, res){
+app.get('/companion/two', function(req, res){
 	res.render('companion/companion_2')
 })
-app.get('/companion/three', isLoggedIn, function(req, res){
+app.get('/companion/three', function(req, res){
 	res.render('companion/companion_3')
 })
 
