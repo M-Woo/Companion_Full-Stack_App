@@ -12,6 +12,9 @@ b{
 	margin-top: -20px;
 	filter: blue;
 }
+.navCont{
+	width: 100%;
+}
 /* Float Elements 
 ---------------------------------*/
 .fl-lt {float:left;}
